@@ -4,15 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "USER_DETAILS")
+@Entity
 public class UserDetails {
 	@Id
-	@Column(name = "USER_ID")
 	private int userId;
-	@Column(name = "USER_NAME")
 	private String userName;
-
-
 	
 	public int getUserId() {
 		return userId;
