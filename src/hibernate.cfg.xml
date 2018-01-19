@@ -55,9 +55,9 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="org.sergey.javabrains.dto.UserDetails"/>
-        <mapping class="org.sergey.javabrains.dto.Vehicle"/>
+<!--         <mapping class="org.sergey.javabrains.dto.Vehicle"/>
          <mapping class="org.sergey.javabrains.dto.TwoWheeler"/>
-          <mapping class="org.sergey.javabrains.dto.FourWheeler"/>
+          <mapping class="org.sergey.javabrains.dto.FourWheeler"/> -->
 
     </session-factory>
     
