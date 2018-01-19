@@ -24,18 +24,7 @@ public class UserDetails {
 	private int userId;
 	private String userName;
 	
-	@ElementCollection(fetch = FetchType.EAGER)
-	//@JoinTable(name = "userdetails_listofaddresses", joinColumns=@JoinColumn(name = "USER_ID"))
 	
-	private Collection<Address> listOfAddresses = new ArrayList();
-	
-
-	public Collection<Address> getListOfAddresses() {
-		return listOfAddresses;
-	}
-	public void setListOfAddresses(Collection<Address> listOfAddresses) {
-		this.listOfAddresses = listOfAddresses;
-	}
 	public int getUserId() {
 		return userId;
 	}
