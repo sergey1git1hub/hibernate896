@@ -12,7 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,7 +26,16 @@ public class UserDetails {
 	private int userId;
 	private String userName;
 	
+	@OneToOne
+	@JoinColumn(name = "VEHICLE_ID")
+	private Vehicle vehicle;
 	
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
 	public int getUserId() {
 		return userId;
 	}

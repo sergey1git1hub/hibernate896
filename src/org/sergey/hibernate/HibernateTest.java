@@ -2,6 +2,8 @@ package org.sergey.hibernate;
 
 import org.sergey.javabrains.dto.Address;
 import org.sergey.javabrains.dto.UserDetails;
+import org.sergey.javabrains.dto.Vehicle;
+
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,11 +16,17 @@ public class HibernateTest {
 		//user.setUserId(1);
 		user.setUserName("Sergey");
 		
+		Vehicle  vehicle = new Vehicle();
+		vehicle.setVehicleName("car");
+		
+		user.setVehicle(vehicle);
+		
 	
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user);
+		session.save(vehicle);
 		session.getTransaction().commit();
 		session.close();
 		
