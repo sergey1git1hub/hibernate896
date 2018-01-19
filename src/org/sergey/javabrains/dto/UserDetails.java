@@ -1,15 +1,21 @@
 package org.sergey.javabrains.dto;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class UserDetails {
-	@Id
+	@Id @GeneratedValue
 	private int userId;
 	private String userName;
 	
+	@Embedded
+	private Address address;
+	
+
 	public int getUserId() {
 		return userId;
 	}
@@ -25,4 +31,10 @@ public class UserDetails {
 		this.userName = userName;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 }

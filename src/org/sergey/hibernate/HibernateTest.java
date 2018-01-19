@@ -1,5 +1,6 @@
 package org.sergey.hibernate;
 
+import org.sergey.javabrains.dto.Address;
 import org.sergey.javabrains.dto.UserDetails;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Session;
@@ -10,8 +11,12 @@ public class HibernateTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		UserDetails user = new UserDetails();
-		user.setUserId(1);
+		//user.setUserId(1);
 		user.setUserName("Sergey");
+		Address address = new Address();
+		address.setStreet("Street Name");
+		address.setCity("City Name");
+		user.setAddress(address);
 		
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
