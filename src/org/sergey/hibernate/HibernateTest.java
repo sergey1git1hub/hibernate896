@@ -25,6 +25,8 @@ public class HibernateTest {
 		user.getVehicle().add(vehicle);
 		user.getVehicle().add(vehicle2);
 		
+		vehicle.getUserList().add(user);
+		vehicle2.getUserList().add(user);
 	
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
