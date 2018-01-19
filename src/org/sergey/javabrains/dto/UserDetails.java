@@ -1,5 +1,7 @@
 package org.sergey.javabrains.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 @Entity
 public class UserDetails {
 	@Id @GeneratedValue
@@ -18,14 +24,16 @@ public class UserDetails {
 	private String userName;
 	
 	@ElementCollection
-	@JoinTable(name = "USER_ADDRESSES"/*, joinColumns=@JoinColumn(name = "USER_ID")*/)
-	private Set<Address> listOfAddresses = new HashSet();
+	//@JoinTable(name = "userdetails_listofaddresses", joinColumns=@JoinColumn(name = "USER_ID"))
+	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
+	@CollectionId(columns = { @Column(name = "ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type = "long"))
+	private Collection<Address> listOfAddresses = new ArrayList();
 	
 
-	public Set<Address> getListOfAddresses() {
+	public Collection<Address> getListOfAddresses() {
 		return listOfAddresses;
 	}
-	public void setListOfAddresses(Set<Address> listOfAddresses) {
+	public void setListOfAddresses(Collection<Address> listOfAddresses) {
 		this.listOfAddresses = listOfAddresses;
 	}
 	public int getUserId() {
