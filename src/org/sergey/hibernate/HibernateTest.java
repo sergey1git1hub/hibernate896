@@ -40,6 +40,8 @@ public class HibernateTest {
 		session.beginTransaction();
 		userFromDB = (UserDetails) session.get(UserDetails.class, 1);
 		System.out.println("User Name retrieved: " + userFromDB.getUserName());
+		//session.close();
+		System.out.println(userFromDB.getListOfAddresses().size());
 
 	}
 

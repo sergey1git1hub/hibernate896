@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
@@ -23,10 +24,9 @@ public class UserDetails {
 	private int userId;
 	private String userName;
 	
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	//@JoinTable(name = "userdetails_listofaddresses", joinColumns=@JoinColumn(name = "USER_ID"))
-	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
-	@CollectionId(columns = { @Column(name = "ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type = "long"))
+	
 	private Collection<Address> listOfAddresses = new ArrayList();
 	
 
