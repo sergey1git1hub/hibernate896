@@ -18,16 +18,19 @@ public class HibernateTest {
 		
 		session.beginTransaction();
 		
-		for(int i=0; i< 10; i++){
+	/*	for(int i=0; i< 10; i++){
 			UserDetails user = new UserDetails();
 			user.setUserName("User" + i);
 			session.save(user);
-		}
+		}*/
 		
 		//save them
+		UserDetails user = (UserDetails) session.get(UserDetails.class, 6);
 		
 		session.getTransaction().commit();
 		session.close();
+		
+		System.out.println("User name pulled up is: " + user.getUserName());
 		
 		
 		
